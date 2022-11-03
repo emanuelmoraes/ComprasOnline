@@ -1,11 +1,4 @@
 class Usuario:
-	def __init__(self):
-		self.id = 0
-		self.nome = ""
-		self.email = ""
-		self.senha = ""
-		self.cep = ""
-
 	def __init__(self, _id, _nome, _email, _senha, _cep):
 		self.id = _id
 		self.nome = _nome
@@ -17,10 +10,12 @@ class Usuario:
 		s = 'insert into Usuario values (%s, "%s", "%s", "%s", "%s")' % (self.id, self.nome, self.email, self.senha, self.cep)
 		return s
 
-	def descompat_sel(self, sql):
-		# insert into Usuario values (1, "emanuel", "emanueljsmorae@gmail.com", "12345", "89052-000")
-		s = sql.split(" ")
-		return s
+	def insert_data_from_lista(self, lista):
+		self.id = lista[0]
+		self.nome = lista[1]
+		self.email = lista[2]
+		self.senha = lista[3]
+		self.cep = lista[4]
 
 class CarrinhoCompra:
 	def __init__(self):
