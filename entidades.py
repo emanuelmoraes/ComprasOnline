@@ -13,6 +13,15 @@ class Usuario:
 		self.senha = _senha
 		self.cep = _cep
 
+	def crate_sql(self):
+		s = 'insert into Usuario values (%s, "%s", "%s", "%s", "%s")' % (self.id, self.nome, self.email, self.senha, self.cep)
+		return s
+
+	def descompat_sel(self, sql):
+		# insert into Usuario values (1, "emanuel", "emanueljsmorae@gmail.com", "12345", "89052-000")
+		s = sql.split(" ")
+		return s
+
 class CarrinhoCompra:
 	def __init__(self):
 		self.id = 0

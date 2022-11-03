@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="../static/bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+<body>
+<title>Usuário</title>
+<h1>Cadastro de usuários:</h1>
+<table>
+  {% for user in users %}
+    <tr>
+      <td>User {{ user.nome }}!</td>
+      <td>{{ user.email }}</td>
+      <td><input type="button" value="Cadastrar"></td>
+      <td><input type="button" value="Remover"></td>
+      <td><input type="button" value="Atualizar"></td>
+    </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
