@@ -6,16 +6,27 @@
 <body>
 <title>Usuário</title>
 <h1>Cadastro de usuários:</h1>
-<table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
   {% for user in users %}
     <tr>
-      <td>User {{ user.nome }}!</td>
+      <td>{{ user.nome }}</td>
       <td>{{ user.email }}</td>
-      <td><input type="button" value="Cadastrar"></td>
-      <td><input type="button" value="Remover"></td>
-      <td><input type="button" value="Atualizar"></td>
+      <td><input type="button" value="Remover" class="btn btn-danger"></td>
+      <td><input type="button" value="Atualizar" class="btn btn-primary"></td>
     </tr>
   {% endfor %}
+  </tbody>
 </table>
+<br>
+<input type="button" value="Cadastrar" class="btn btn-primary">
 </body>
 </html>

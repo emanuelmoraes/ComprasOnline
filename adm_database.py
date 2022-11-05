@@ -17,11 +17,33 @@ connect = sqlite3.connect("example.db")
 cursor = connect.cursor()
 
 def criar_tabelas():
-    cursor.execute("create table Usuario(id, nome, email, senha, cep)")
-    cursor.execute("create table CarrinhoCompra(id, nome, usuario_id)")
-    cursor.execute("create table CarrinhoUsuario(id, produto_id, user_id, carrinho_id)")
-    cursor.execute("create table Supermecado(id, nome, site)")
-    cursor.execute("create table Produto(id, nome, marca, valor, unidade, supermecado_id)")
+    cursor.execute("CREATE TABLE `Usuario` (\
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
+	`nome` VARCHAR(50) NOT NULL,\
+	`email` VARCHAR(30) NOT NULL,\
+	`senha` VARCHAR(20) NOT NULL,\
+	`cep` VARCHAR(10))")
+    cursor.execute("CREATE TABLE `CarrinhoCompra` (\
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
+	`nome` VARCHAR(50),\
+	`usuario_id` INT(20))")
+    cursor.execute("CREATE TABLE `CarrinhoUsuario` (\
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
+	`produto_id` INT(20) NOT NULL,\
+	`usuario_id` INT(20) NOT NULL,\
+	`carrinho_id` INT(20) NOT NULL)")
+    cursor.execute("CREATE TABLE `Supermecado` (\
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
+	`nome` VARCHAR(50) NOT NULL,\
+	`site` VARCHAR(50))")
+    cursor.execute("CREATE TABLE `Produto` (\
+	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
+	`nome` VARCHAR(50) NOT NULL,\
+	`marca` VARCHAR(50),\
+    'valor' VARCHAR(10),\
+    'unidade' VARCHAR(10),\
+    'supermecado_id' INTEGER\
+    )")
 
 def apagar_tabelas():
     cursor.execute("drop table Usuario")
