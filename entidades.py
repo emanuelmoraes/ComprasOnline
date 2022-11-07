@@ -1,4 +1,14 @@
 from app import db
+
+class Usuario(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	nome = db.Column(db.String, nullable=False)
+	email = db.Column(db.String, nullable=True)
+	senha = db.Column(db.String, nullable=False)
+	cep = db.Column(db.String, nullable=True)
+
+	def __repr__(self) -> str:
+		return '<Name %r>' % self.name
 class CarrinhoCompra(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	nome = db.Column(db.String, nullable=False)

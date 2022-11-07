@@ -11,6 +11,8 @@
     <tr>
       <th scope="col">Nome</th>
       <th scope="col">Email</th>
+      <th scope="col">Senha</th>
+      <th scope="col">CEP</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
@@ -20,6 +22,8 @@
     <tr>
       <td>{{ user.nome }}</td>
       <td>{{ user.email }}</td>
+      <td>{{ user.senha }}</td>
+      <td>{{ user.cep }}</td>
       <td><input type="button" value="Remover" class="btn btn-danger"></td>
       <td><input type="button" value="Atualizar" class="btn btn-primary"></td>
     </tr>
@@ -27,6 +31,6 @@
   </tbody>
 </table>
 <br>
-<input type="button" value="Cadastrar" class="btn btn-primary">
+<input type="button" value="Cadastrar" class="btn btn-primary" action="/cadusuario">
 </body>
 </html>
