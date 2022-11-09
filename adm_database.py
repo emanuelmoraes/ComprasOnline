@@ -17,26 +17,26 @@ connect = sqlite3.connect("example.db")
 cursor = connect.cursor()
 
 def criar_tabelas():
-    cursor.execute("CREATE TABLE `Usuario` (\
+    cursor.execute("CREATE TABLE `usuario` (\
 	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
 	`nome` VARCHAR(50) NOT NULL,\
 	`email` VARCHAR(30) NOT NULL,\
 	`senha` VARCHAR(20) NOT NULL,\
 	`cep` VARCHAR(10))")
-    cursor.execute("CREATE TABLE `CarrinhoCompra` (\
+    cursor.execute("CREATE TABLE `carrinho_compra` (\
 	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
 	`nome` VARCHAR(50),\
 	`usuario_id` INT(20))")
-    cursor.execute("CREATE TABLE `CarrinhoUsuario` (\
+    cursor.execute("CREATE TABLE `carrinho_usuario` (\
 	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
 	`produto_id` INT(20) NOT NULL,\
 	`usuario_id` INT(20) NOT NULL,\
 	`carrinho_id` INT(20) NOT NULL)")
-    cursor.execute("CREATE TABLE `Supermecado` (\
+    cursor.execute("CREATE TABLE `supermecado` (\
 	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
 	`nome` VARCHAR(50) NOT NULL,\
 	`site` VARCHAR(50))")
-    cursor.execute("CREATE TABLE `Produto` (\
+    cursor.execute("CREATE TABLE `produto` (\
 	`id` INTEGER PRIMARY KEY AUTOINCREMENT,\
 	`nome` VARCHAR(50) NOT NULL,\
 	`marca` VARCHAR(50),\
@@ -46,37 +46,37 @@ def criar_tabelas():
     )")
 
 def apagar_tabelas():
-    cursor.execute("drop table Usuario")
-    cursor.execute("drop table CarrinhoCompra")
-    cursor.execute("drop table CarrinhoUsuario")
-    cursor.execute("drop table Supermecado")
-    cursor.execute("drop table Produto")
+    cursor.execute("drop table usuario")
+    cursor.execute("drop table carrinho_compra")
+    cursor.execute("drop table carrinho_usuario")
+    cursor.execute("drop table supermecado")
+    cursor.execute("drop table produto")
 
 def limpar_tabelas():
-    cursor.execute("delete from Usuario")
-    cursor.execute("delete from CarrinhoCompra")
-    cursor.execute("delete from CarrinhoUsuario")
-    cursor.execute("delete from Supermecado")
-    cursor.execute("delete from Produto")
+    cursor.execute("delete from usuario")
+    cursor.execute("delete from carrinho_compra")
+    cursor.execute("delete from carrinho_usuario")
+    cursor.execute("delete from supermecado")
+    cursor.execute("delete from produto")
 
 def popular_tabelas():
-    cursor.execute("insert into Usuario values (1, 'emanuel', 'emanueljsmoraes@gmail.com', '123456', '89052-000')")
-    cursor.execute("insert into Usuario values (2, 'edson', 'etjbr@gmail.com', '123456', '89052-000')")
-    cursor.execute("insert into CarrinhoCompra values (1, 'primeiro', 1)")
-    cursor.execute("insert into CarrinhoCompra values (2, 'semana', 1)")
-    cursor.execute("insert into CarrinhoCompra values (3, 'mensal', 2)")
-    cursor.execute("insert into CarrinhoCompra values (4, 'churrasco', 2)")
+    cursor.execute("insert into usuario values (1, 'emanuel', 'emanueljsmoraes@gmail.com', '123456', '89052-000')")
+    cursor.execute("insert into usuario values (2, 'edson', 'etjbr@gmail.com', '123456', '89052-000')")
+    cursor.execute("insert into carrinho_compra values (1, 'primeiro', 1)")
+    cursor.execute("insert into carrinho_compra values (2, 'semana', 1)")
+    cursor.execute("insert into carrinho_compra values (3, 'mensal', 2)")
+    cursor.execute("insert into carrinho_compra values (4, 'churrasco', 2)")
     #cursor.execute("insert into CarrinhoUsuario values ()")
-    cursor.execute("insert into Supermecado values (1, 'Villareal', 'villareal.com.br')")
-    cursor.execute("insert into Supermecado values (2, 'Carrefour', 'carrefour.com.br')")
-    cursor.execute("insert into Produto values (1, 'leite', 'parmalat', '10,00', 'caixa', 1)")
-    cursor.execute("insert into Produto values (2, 'pão', 'carrefour', '1,00', 'un', 1)")
-    cursor.execute("insert into Produto values (3, 'café', 'união', '5,50', 'pacote', 1)")
-    cursor.execute("insert into Produto values (4, 'torrada', 'blabla', '6,50', 'pacote', 1)")
-    cursor.execute("insert into Produto values (5, 'leite', 'parmalat', '12,00', 'caixa', 2)")
-    cursor.execute("insert into Produto values (6, 'pão', 'carrefour', '2,00', 'un', 2)")
-    cursor.execute("insert into Produto values (7, 'café', 'união', '4,50', 'pacote', 2)")
-    cursor.execute("insert into Produto values (8, 'torrada', 'blabla', '3,50', 'pacote', 2)")
+    cursor.execute("insert into supermecado values (1, 'Villareal', 'villareal.com.br')")
+    cursor.execute("insert into supermecado values (2, 'Carrefour', 'carrefour.com.br')")
+    cursor.execute("insert into produto values (1, 'leite', 'parmalat', '10,00', 'caixa', 1)")
+    cursor.execute("insert into produto values (2, 'pão', 'carrefour', '1,00', 'un', 1)")
+    cursor.execute("insert into produto values (3, 'café', 'união', '5,50', 'pacote', 1)")
+    cursor.execute("insert into produto values (4, 'torrada', 'blabla', '6,50', 'pacote', 1)")
+    cursor.execute("insert into produto values (5, 'leite', 'parmalat', '12,00', 'caixa', 2)")
+    cursor.execute("insert into produto values (6, 'pão', 'carrefour', '2,00', 'un', 2)")
+    cursor.execute("insert into produto values (7, 'café', 'união', '4,50', 'pacote', 2)")
+    cursor.execute("insert into produto values (8, 'torrada', 'blabla', '3,50', 'pacote', 2)")
 
 def pega_usuario_tabela(id):
     s = "select * from Usuario where id = %s" % id
@@ -91,16 +91,17 @@ def main(argv):
     print ('Number of arguments:', len(sys.argv), 'arguments.')
     print ('Argument List:', str(sys.argv))
 
-    if (str(sys.argv[1]) == "1"):
-        criar_tabelas()
-    if (str(sys.argv[1]) == "2"):
-        apagar_tabelas()
-    if (str(sys.argv[1]) == "3"):
-        limpar_tabelas()
-    if (str(sys.argv[1]) == "4"):
-        popular_tabelas()
-    if (str(sys.argv[1]) == "5"):
-        pega_usuario_tabela("1")
+    for item in sys.argv:
+        if (str(item) == "1"):
+            criar_tabelas()
+        if (str(item) == "2"):
+            apagar_tabelas()
+        if (str(item) == "3"):
+            limpar_tabelas()
+        if (str(item) == "4"):
+            popular_tabelas()
+        if (str(item) == "5"):
+            pega_usuario_tabela("1")
     
     connect.commit()
 

@@ -77,14 +77,17 @@ def incluir_usuario():
     
 @app.route("/carrinhocompra")
 def carrinhocompra():
-    return "<H1>Carrinho de Compra</H1>"
+	listaCarrinho = CarrinhoCompra.query.order_by('id')
+	return render_template('carrinhocompra.html', lista=listaCarrinho)
 
 @app.route("/supermecado")
 def supermecado():
-    return "<H1>Supermecado</H1>"
+	lista = Supermecado.query.order_by('id')
+	return render_template('supermecado.html', lista=lista)
 
 @app.route("/produto")
 def produto():
-    return "<H1>Produto</H1>"
+	lista = Produto.query.order_by('id')
+	return render_template('produto.html', lista=lista)
 
 app.run("localhost", 50, debug=True)

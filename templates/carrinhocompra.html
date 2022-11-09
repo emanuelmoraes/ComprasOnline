@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="../static/bootstrap-5.2.2-dist/css/bootstrap.css">
 </head>
 <body>
-<title>Usuário</title>
+<title>Carrinho de compras</title>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Compras Online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,38 +16,34 @@
         <a class="nav-link" href="/">Home </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/usuario">Usuário <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/usuario">Usuário </a>
       <li class="nav-item">
-        <a class="nav-link" href="/carrinhocompra">Carrinho de compra</a>
+        <a class="nav-link disabled" href="/carrinhocompra">Carrinho de compra <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/supermecado">Supermecado</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/produto">Produto</a>
+        <a class="nav-link disabled" href="/produto">Produto</a>
       </li>
     </ul>
   </div>
 </nav>
-<h1>Cadastro de usuários:</h1>
+<h1>Lista:</h1>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-      <th scope="col">Senha</th>
-      <th scope="col">CEP</th>
+      <th scope="col">Id do usuario</th>
       <th scope="col"></th>
       <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-  {% for user in users %}
+  {% for item in lista %}
     <tr>
-      <td>{{ user.nome }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.senha }}</td>
-      <td>{{ user.cep }}</td>
+      <td>{{ item.nome }}</td>
+      <td>{{ item.usuario_id }}</td>
       <td><input type="button" value="Remover" class="btn btn-danger"></td>
       <td><input type="button" value="Atualizar" class="btn btn-primary"></td>
     </tr>
@@ -55,6 +51,15 @@
   </tbody>
 </table>
 <br>
-<a href="/cadusuario" class="btn btn-primary">Cadastrar</a>
+<h1>Cadastro:</h1>
+<form action="/cadcarrinhocompra" method="POST">
+    <div class="form-group">
+        <label>Nome:</label><input type="text" name="nome" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label>Id do usuario:</label><input type="text" name="usuario_id" class="form-control"/><br>
+    </div>
+    <input type="button" value="Cadastrar" class="btn btn-primary"/>
+</form>
 </body>
 </html>
