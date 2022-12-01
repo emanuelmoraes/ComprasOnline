@@ -5,6 +5,7 @@ db = SQLAlchemy()
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///example.db"
 db.init_app(app)
+#somos foda
 
 class Usuario(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
